@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails'
@@ -17,7 +18,7 @@ require 'action_controller/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module RailsApiTemplate
+module Project2API
   # :nodoc:
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified
