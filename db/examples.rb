@@ -17,3 +17,30 @@
 #                password: 'abc123',
 #                password_confirmation: nil)
 # end
+
+Movie.create([
+  {
+    name: "Frozen",
+    year_released: 2013,
+    mpaa_rating: "G",
+    user_rating: 9,
+    length: 100,
+    ownership_status: true,
+    ownership_type: "iTunes",
+    last_viewing: nil,
+    times_watched: nil,
+    user: nil
+  },
+  {
+    name: "Moana",
+    year_released: 2016,
+    mpaa_rating: "G",
+    user_rating: 8,
+    length: 120,
+    ownership_status: true,
+    ownership_type: "iTunes",
+    last_viewing: nil,
+    times_watched: nil,
+    user: nil
+  }
+  ])

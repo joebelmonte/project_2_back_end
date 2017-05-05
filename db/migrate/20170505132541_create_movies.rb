@@ -1,7 +1,7 @@
 class CreateMovies < ActiveRecord::Migration[5.0]
   def change
     create_table :movies do |t|
-      t.string :name
+      t.string :name, null: false
       t.integer :year_released
       t.string :mpaa_rating
       t.integer :user_rating
