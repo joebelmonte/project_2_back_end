@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# TOKEN="BAhJIiU1YzJkODNkZTZiNjVkMzRmODRkMDRhNTQ2MzA5Yjk5ZQY6BkVG--1b7e021963a0655210c9e90be26249d18ad608ba" scripts/get-movies.sh
+# TOKEN="BAhJIiUwYTA0MjkzNWQyMjhlZTQwOTE5MTNhZTU3MjFlZTZmNQY6BkVG--09380f41d338a8c95443d5e7278ccd190251b295" scripts/get-movies.sh
 
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/movies"

@@ -4238,3 +4238,470 @@ Processing by MoviesController#update as */*
 Completed 200 OK in 11ms (Views: 4.3ms | ActiveRecord: 2.4ms)
 
 
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 15:23:04 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.4ms)[0m  [1m[33mUPDATE "users" SET "token" = '15da08491aba8cb578b401aaa374835c', "updated_at" = '2017-05-05 19:23:04.499913' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.19ms)
+Completed 200 OK in 76ms (Views: 0.6ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/movies" for 127.0.0.1 at 2017-05-05 15:23:15 -0400
+Processing by MoviesController#create as */*
+  Parameters: {"movie"=>{"name"=>"exam 1"}, "submit"=>"Create New Movie"}
+Filter chain halted as :authenticate rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 15:30:54 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.3ms)[0m  [1m[33mUPDATE "users" SET "token" = '0a042935d228ee4091913ae5721ee6f5', "updated_at" = '2017-05-05 19:30:54.550289' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.2ms)
+Completed 200 OK in 85ms (Views: 0.6ms | ActiveRecord: 6.8ms)
+
+
+Started POST "/movies" for 127.0.0.1 at 2017-05-05 15:30:59 -0400
+Processing by MoviesController#create as */*
+  Parameters: {"movie"=>{"name"=>"hbn"}, "submit"=>"Create New Movie"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "0a042935d228ee4091913ae5721ee6f5"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "movies" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "hbn"], ["user_id", 32], ["created_at", 2017-05-05 19:30:59 UTC], ["updated_at", 2017-05-05 19:30:59 UTC]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered MovieSerializer with ActiveModelSerializers::Adapter::Json (0.67ms)
+Completed 201 Created in 16ms (Views: 1.5ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 15:32:59 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "0a042935d228ee4091913ae5721ee6f5"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.93ms)
+Completed 200 OK in 7ms (Views: 4.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:14:32 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.4ms)[0m  [1m[33mUPDATE "users" SET "token" = '3f669035b41d2bee131af40bb9fc9a7c', "updated_at" = '2017-05-05 20:14:32.990446' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.19ms)
+Completed 200 OK in 76ms (Views: 0.6ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:15:43 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (11.9ms)[0m  [1m[33mUPDATE "users" SET "token" = '6a83ba341149efd23681852987dfd0be', "updated_at" = '2017-05-05 20:15:43.620638' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.21ms)
+Completed 200 OK in 86ms (Views: 0.6ms | ActiveRecord: 12.2ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:16:05 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.2ms)[0m  [1m[33mUPDATE "users" SET "token" = '86dc163bc0622de7766961ccf382c71b', "updated_at" = '2017-05-05 20:16:05.150734' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.22ms)
+Completed 200 OK in 77ms (Views: 0.6ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:17:05 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.5ms)[0m  [1m[33mUPDATE "users" SET "token" = 'd6907251bd3c1bf39e34120c9439fa1a', "updated_at" = '2017-05-05 20:17:05.091102' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.19ms)
+Completed 200 OK in 78ms (Views: 0.6ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:17:07 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "d6907251bd3c1bf39e34120c9439fa1a"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.73ms)
+Completed 200 OK in 7ms (Views: 3.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:18:11 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (10.2ms)[0m  [1m[33mUPDATE "users" SET "token" = 'd68fa6f5b3f8ae325ab42b826d791a45', "updated_at" = '2017-05-05 20:18:11.837948' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.21ms)
+Completed 200 OK in 84ms (Views: 0.6ms | ActiveRecord: 11.4ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:18:14 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "d68fa6f5b3f8ae325ab42b826d791a45"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.75ms)
+Completed 200 OK in 7ms (Views: 4.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:19:02 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.3ms)[0m  [1m[33mUPDATE "users" SET "token" = '29feb494dfecb5091eff9d98d4495c50', "updated_at" = '2017-05-05 20:19:02.677207' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.2ms)
+Completed 200 OK in 75ms (Views: 0.6ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:19:05 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "29feb494dfecb5091eff9d98d4495c50"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.41ms)
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:19:51 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.0ms)[0m  [1m[33mUPDATE "users" SET "token" = 'e18af936947e028cb9ccce088fdfb783', "updated_at" = '2017-05-05 20:19:51.029701' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.21ms)
+Completed 200 OK in 81ms (Views: 0.6ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:20:03 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "e18af936947e028cb9ccce088fdfb783"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.39ms)
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:26:26 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.0ms)[0m  [1m[33mUPDATE "users" SET "token" = 'd36ae6960781e72bc7936b86d84bd234', "updated_at" = '2017-05-05 20:26:26.394747' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.18ms)
+Completed 200 OK in 80ms (Views: 0.6ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:26:28 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "d36ae6960781e72bc7936b86d84bd234"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.36ms)
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:27:07 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (5.9ms)[0m  [1m[33mUPDATE "users" SET "token" = '735fcbc77d53c345231eeea1b7c48def', "updated_at" = '2017-05-05 20:27:07.131266' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.19ms)
+Completed 200 OK in 79ms (Views: 0.6ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:27:09 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "735fcbc77d53c345231eeea1b7c48def"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.5ms)
+Completed 200 OK in 9ms (Views: 4.4ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:28:28 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (5.9ms)[0m  [1m[33mUPDATE "users" SET "token" = 'e7e33d69a6c8bc95836ab27e3846dc63', "updated_at" = '2017-05-05 20:28:28.686665' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.19ms)
+Completed 200 OK in 79ms (Views: 0.6ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:28:30 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "e7e33d69a6c8bc95836ab27e3846dc63"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.47ms)
+Completed 200 OK in 7ms (Views: 3.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:40:41 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.3ms)[0m  [1m[33mUPDATE "users" SET "token" = '782efc97c7817ba1f40de9270df66914', "updated_at" = '2017-05-05 20:40:41.984801' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.27ms)
+Completed 200 OK in 81ms (Views: 0.7ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:40:47 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "782efc97c7817ba1f40de9270df66914"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.84ms)
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:41:40 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.5ms)[0m  [1m[33mUPDATE "users" SET "token" = '8040021fc2353226ff9deb8d0faa6a09', "updated_at" = '2017-05-05 20:41:40.891255' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.27ms)
+Completed 200 OK in 80ms (Views: 0.9ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:41:43 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "8040021fc2353226ff9deb8d0faa6a09"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.83ms)
+Completed 200 OK in 7ms (Views: 3.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:43:46 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.4ms)[0m  [1m[33mUPDATE "users" SET "token" = '90543c93fe25ff71a9f8b15fa1a29a5f', "updated_at" = '2017-05-05 20:43:46.980096' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.18ms)
+Completed 200 OK in 80ms (Views: 0.6ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:43:51 -0400
+Processing by MoviesController#index as */*
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:43:51 -0400
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "90543c93fe25ff71a9f8b15fa1a29a5f"], ["LIMIT", 1]]
+Processing by MoviesController#index as */*
+  [1m[36mMovie Load (0.9ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.28ms)
+Completed 200 OK in 7ms (Views: 3.2ms | ActiveRecord: 1.8ms)
+
+
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "90543c93fe25ff71a9f8b15fa1a29a5f"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.6ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.44ms)
+Completed 200 OK in 8ms (Views: 3.6ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:44:28 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.2ms)[0m  [1m[33mUPDATE "users" SET "token" = '71e0b335066fc2753eff192b7b22a82b', "updated_at" = '2017-05-05 20:44:28.955544' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.18ms)
+Completed 200 OK in 80ms (Views: 0.6ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:44:31 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "71e0b335066fc2753eff192b7b22a82b"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.79ms)
+Completed 200 OK in 7ms (Views: 3.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:45:19 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.2ms)[0m  [1m[33mUPDATE "users" SET "token" = '1c0ec83e53146f5434b21ae55dcefa80', "updated_at" = '2017-05-05 20:45:19.840582' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.3ms)
+Completed 200 OK in 80ms (Views: 0.8ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:45:21 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "1c0ec83e53146f5434b21ae55dcefa80"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (2.06ms)
+Completed 200 OK in 7ms (Views: 4.0ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:45:46 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.3ms)[0m  [1m[33mUPDATE "users" SET "token" = '3d77971d49780215423e3fe60ef0ab6d', "updated_at" = '2017-05-05 20:45:46.939649' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.22ms)
+Completed 200 OK in 70ms (Views: 0.6ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:45:48 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "3d77971d49780215423e3fe60ef0ab6d"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.3ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.28ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:46:33 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.4ms)[0m  [1m[33mUPDATE "users" SET "token" = '85a918e7bc987c971f10c43e87786639', "updated_at" = '2017-05-05 20:46:33.350222' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.27ms)
+Completed 200 OK in 78ms (Views: 0.6ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:46:35 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "85a918e7bc987c971f10c43e87786639"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.6ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.62ms)
+Completed 200 OK in 7ms (Views: 3.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:46:53 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.4ms)[0m  [1m[33mUPDATE "users" SET "token" = 'd51607e5637194372e347292ab446921', "updated_at" = '2017-05-05 20:46:53.490127' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.26ms)
+Completed 200 OK in 80ms (Views: 0.7ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:46:55 -0400
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "d51607e5637194372e347292ab446921"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.39ms)
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 16:54:42 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.5ms)[0m  [1m[33mUPDATE "users" SET "token" = 'db3d7280cf283458f4858e8ffa11682e', "updated_at" = '2017-05-05 20:54:42.763924' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.22ms)
+Completed 200 OK in 77ms (Views: 0.6ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:54:45 -0400
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 16:54:45 -0400
+Processing by MoviesController#index as */*
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "db3d7280cf283458f4858e8ffa11682e"], ["LIMIT", 1]]
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "db3d7280cf283458f4858e8ffa11682e"], ["LIMIT", 1]]
+  [1m[36mMovie Load (2.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (2.07ms)
+  [1m[36mMovie Load (3.6ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 11ms (Views: 4.4ms | ActiveRecord: 4.5ms)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.55ms)
+Completed 200 OK in 13ms (Views: 4.5ms | ActiveRecord: 6.1ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 17:03:31 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.6ms)[0m  [1m[33mUPDATE "users" SET "token" = 'a1d7ef3453a9fad6760fce0d11212b2b', "updated_at" = '2017-05-05 21:03:31.983992' WHERE "users"."id" = $1[0m  [["id", 32]]
+Completed 401 Unauthorized in 78ms (ActiveRecord: 7.0ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 17:03:37 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.1ms)[0m  [1m[33mUPDATE "users" SET "token" = '496927b67816fe1410b6a502741e0a63', "updated_at" = '2017-05-05 21:03:37.765433' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.19ms)
+Completed 200 OK in 78ms (Views: 0.6ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 17:03:42 -0400
+Processing by MoviesController#index as */*
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 17:03:42 -0400
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "496927b67816fe1410b6a502741e0a63"], ["LIMIT", 1]]
+Processing by MoviesController#index as */*
+  [1m[36mMovie Load (1.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.58ms)
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "496927b67816fe1410b6a502741e0a63"], ["LIMIT", 1]]
+Completed 200 OK in 9ms (Views: 4.1ms | ActiveRecord: 1.7ms)
+
+
+  [1m[36mMovie Load (1.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.73ms)
+Completed 200 OK in 11ms (Views: 5.1ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 17:04:55 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.3ms)[0m  [1m[33mUPDATE "users" SET "token" = 'd6477e7e6f2ca21e9cedfcca4c25312f', "updated_at" = '2017-05-05 21:04:55.653396' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.22ms)
+Completed 200 OK in 77ms (Views: 0.6ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 17:04:58 -0400
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 17:04:58 -0400
+Processing by MoviesController#index as */*
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "d6477e7e6f2ca21e9cedfcca4c25312f"], ["LIMIT", 1]]
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "d6477e7e6f2ca21e9cedfcca4c25312f"], ["LIMIT", 1]]
+  [1m[36mMovie Load (2.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.79ms)
+  [1m[36mMovie Load (3.5ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 10ms (Views: 4.2ms | ActiveRecord: 3.4ms)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.29ms)
+Completed 200 OK in 11ms (Views: 3.5ms | ActiveRecord: 5.7ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 17:05:27 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.4ms)[0m  [1m[33mUPDATE "users" SET "token" = 'c83f2056fa5ea3842b88c28d1153e56c', "updated_at" = '2017-05-05 21:05:27.278059' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.21ms)
+Completed 200 OK in 75ms (Views: 0.7ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 17:05:29 -0400
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 17:05:29 -0400
+Processing by MoviesController#index as */*
+Processing by MoviesController#index as */*
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "c83f2056fa5ea3842b88c28d1153e56c"], ["LIMIT", 1]]
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "c83f2056fa5ea3842b88c28d1153e56c"], ["LIMIT", 1]]
+  [1m[36mMovie Load (2.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.52ms)
+  [1m[36mMovie Load (2.7ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 9ms (Views: 3.4ms | ActiveRecord: 3.7ms)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.5ms)
+Completed 200 OK in 11ms (Views: 3.9ms | ActiveRecord: 4.7ms)
+
+
+Started POST "/sign-in" for 127.0.0.1 at 2017-05-05 17:06:55 -0400
+Processing by UsersController#signin as */*
+  Parameters: {"credentials"=>{"email"=>"jeb", "password"=>"[FILTERED]"}, "submit"=>"Sign in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jeb"], ["LIMIT", 1]]
+  [1m[35mSQL (6.2ms)[0m  [1m[33mUPDATE "users" SET "token" = 'b1627c83e7c82ca839ea348de37ffef0', "updated_at" = '2017-05-05 21:06:55.405289' WHERE "users"."id" = $1[0m  [["id", 32]]
+[active_model_serializers] Rendered UserLoginSerializer with ActiveModelSerializers::Adapter::Json (0.25ms)
+Completed 200 OK in 79ms (Views: 0.7ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 17:07:01 -0400
+Processing by MoviesController#index as */*
+Started GET "/movies" for 127.0.0.1 at 2017-05-05 17:07:01 -0400
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "b1627c83e7c82ca839ea348de37ffef0"], ["LIMIT", 1]]
+Processing by MoviesController#index as */*
+  [1m[36mMovie Load (1.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.34ms)
+Completed 200 OK in 8ms (Views: 2.8ms | ActiveRecord: 1.9ms)
+
+
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."token" = $1 LIMIT $2[0m  [["token", "b1627c83e7c82ca839ea348de37ffef0"], ["LIMIT", 1]]
+  [1m[36mMovie Load (0.4ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."user_id" = $1[0m  [["user_id", 32]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (1.56ms)
+Completed 200 OK in 8ms (Views: 3.2ms | ActiveRecord: 3.2ms)
+
+
