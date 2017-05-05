@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ID="8" TOKEN="BAhJIiVjNTRmN2QwOGY4YzM2NDQ1ZDc4YTg5NjE4NTA0ZDExZgY6BkVG--075074e930eda69a53cb44f1eedac1adc9575975"  scripts/delete-movie.sh
+# ID="9" TOKEN="BAhJIiU2NGFhMDM5N2NlOWFlZjE5MmEwZjVkMmU3MmEwMjU0OAY6BkVG--df398f328bcfd77140bc285d44e7d1a062777c14"  scripts/delete-movie.sh
 
 API="${API_ORIGIN:-http://localhost:4741}"
 URL_PATH="/movies"
