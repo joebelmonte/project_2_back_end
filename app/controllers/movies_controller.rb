@@ -1,6 +1,6 @@
 class MoviesController < ProtectedController
   before_action :set_movie, only: [:show, :update, :destroy]
-  # require 'pry'
+  require 'pry'
 
   # GET /movies
   def index
@@ -54,6 +54,6 @@ class MoviesController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def movie_params
-      params.require(:movie).permit(:name, :year_released, :mpaa_rating, :user_rating, :length, :ownership_status, :ownership_type, :last_viewing, :times_watched)
+      params.require(:movie).permit(:name, :year_released, :mpaa_rating, :user_rating, :length, :ownership_status, :ownership_type, :last_viewing, :times_watched, :id)
     end
 end
